@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+    margin:0;
+    padding:0;
+}
+body
+{
+    background-color:rgb(25, 25, 26);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.con
+{
+    margin: 30px 20px 20px;
+    width:380px;
+    padding: 15px  30px 10px;
+    background-color:white;
+    border-radius:20px;
+    box-shadow: 0 0 150px rgb(11, 228, 181);
+    
+}
+.rh
+{
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+.con h2
+{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    padding: 12px 12px;
+    width: 60%;
+    background-color: rgb(8, 25, 122);
+    border-radius:20px;
+    color: white;
+}
+.con .row,.row1
+{
+    padding:5px 10px 5px;
+    font-size:large;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+label
+{
+    width: 100%;
+    display: block;
+}
+.con .row input,select
+{
+    width:90%;
+    padding:10px;
+    border:1px solid black;
+    border-radius: 12px;
+    font-size:15px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.row1 input
+{
+    margin-left:35% ;
+    padding:12px;
+    border:1px solid black;
+    border-radius: 20px;
+    color: white;
+    background-color:rgb(8, 25, 122);
+    
+}
+.row3
+{
+    display: block;
+    width: 100%;
+    padding:5px 10px;
+    font-size:large;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+.row2
+{
+    display: block;
+    width: 100%;
+    padding:5px 10px;
+    font-size:large;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+}
+.row1 input:hover
+{
+    background-color:rgb(8, 64, 66);
+}
+.error
+{
+    color: red;
+    display: flex;
+    font-size:medium;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+    </style>
+</head>
+<body>
+    <form onsubmit="check(event)">
+    <div class="con">
+        <div class="rh">
+            <h2>Form Validation</h2>
+        </div>
+            <div class="row">
+                <label>Name</label>
+                <input type="text" id="a1" placeholder="Enter your name">
+                <div class="error" id="r1"></div>
+            </div>
+        <div class="row">
+            <label>Email Id</label>
+            <input type="text" id="a2" placeholder="Enter your email">
+            <div class="error" id="r2"></div>
+        </div>
+
+        <div class="row2">
+            <label style="margin-bottom:2px;">Gender</label>
+            <input type="radio" name="gender" value="M">Male
+            <input type="radio" name="gender" value="F">Female
+            <div class="error" id="r7"></div>
+        </div>
+        <div class="row">
+            <label>Department</label>
+            <select  id="a3" style="width:95%;">
+                <option value="sample">Choose a department</option>
+                <option value="cse">CSE</option>
+                <option value="ece">ECE</option>
+                <option value="eee">EEE</option>
+                <option value="mech">MECH</option>
+                <option value="civil">CIVIL</option>
+            </select>
+            <div class="error" id="r3"></div>
+        </div>
+        <div class="row">
+            <label>Date Of Birth</label>
+            <input type="date" id="a4" >
+            <div class="error" id="r4"></div>
+        </div>
+        <div class="row">
+            <label>Password</label>
+            <input type="password" id="a5" placeholder="Enter your password">
+            <div class="error" id="r5"></div>
+        </div>
+        <div class="row3">
+            <input type="checkbox" id="a6" > I agree term's and condition
+            <div class="error" id="r6"></div>
+        </div>
+        <div class="row1">
+            <input type="submit" value="SUBMIT">
+        </div>
+    </div>
+</form>
+<script>
+    function check(event)
+{
+    event.preventDefault();
+    let a1=document.getElementById("a1").value;
+    let a2=document.getElementById("a2").value;
+    let a3=document.getElementById("a3").value;
+    let a4=document.getElementById("a4").value;
+    let a5=document.getElementById("a5").value;
+    let a6=document.getElementById("a6");
+    let a7=document.getElementsByName("gender");
+
+    let r1=r2=r3=r4=r5=r6=r7=true;
+    if(a1=="")
+    {
+        document.getElementById("r1").innerHTML="*Please enter your name*";
+    }
+    else
+    {
+        r1=false;
+    }
+    if(a2=="")
+    {
+        document.getElementById("r2").innerHTML="*Please enter your email*";
+    }
+    else if((a2.indexOf("@gmail.com") || a2.indexOf("@nec.edu.in"))==-1)
+    {
+        document.getElementById("r2").innerHTML="*Please enter a valid emailaddress*";
+    }
+    else
+    {
+        r2=false;
+    }
+    if(a3=="sample")
+    {
+        document.getElementById("r3").innerHTML="*Please select your department*";
+    }
+    else
+    {
+        r3=false;
+    }
+    if(a4=="")
+    {
+        document.getElementById("r4").innerHTML="*Please enter your dob*";
+    }
+    else
+    {
+        r4=false;
+    }
+    if(a5=="")
+    {
+        document.getElementById("r5").innerHTML="*Please enter your password*";
+    }
+    else if(a5.length<3)
+    {
+        document.getElementById("r5").innerHTML="*Password length more than 2*";
+    }
+    else
+    {
+        r5=false;
+    }
+    if(a6.checked)
+    {
+        r6=false;
+    }
+    else
+    {
+        document.getElementById("r6").innerHTML="*Plese click*"
+    }
+    let u="";
+    for(let i=0;i<a7.length;i++)
+    {
+        if(a7[i].checked)
+        {
+            u=a7[i].value;
+        }
+    }
+    if(u=="")
+    {
+        document.getElementById("r7").innerHTML="*Please select your gender*";
+    }
+    else
+    {
+        r7=false;
+    }
+    if((r1 || r2 || r3 || r4 || r5 || r6 || r7)==true)
+    {
+        
+    }
+    else
+    {
+        alert("success");
+    }
+}
+</script>
+</body>
+</html>
